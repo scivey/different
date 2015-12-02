@@ -122,8 +122,6 @@ void evalHessian(std::function<double (Eigen::VectorXd&)> fn, Eigen::VectorXd &a
       if (i == j) {
         hessOut(i, j) = evalSecondDeriv(fn, i, args);
       } else {
-          // double result = evalFirstDerivCentral(fn, i, args) * evalFirstDerivCentral(fn, j, args);
-          // hessOut(i, j) = result;
         auto alreadyCalculated = seen.find(detail::IndexPair(i, j));
         if (alreadyCalculated != seen.end()) {
           hessOut(i, j) = alreadyCalculated->second;
@@ -131,7 +129,6 @@ void evalHessian(std::function<double (Eigen::VectorXd&)> fn, Eigen::VectorXd &a
           double result = evalFirstDerivCentral(fn, i, args) * evalFirstDerivCentral(fn, j, args);
           seen.insert(std::make_pair(detail::IndexPair(j, i), result));
           hessOut(i, j) = result;
-          // seen.insert(std::make_pair(detail::IndexPair(j, i), result));
         }
       }
     }
