@@ -1,6 +1,9 @@
 ## different
 
-Simple numerical differentiation.  First and second derivatives of single-parameter functions; first and second partial derivatives, gradients and Hessians of functions taking `Eigen::VectorXd` references for arguments.
+Simple numerical differentiation for C++.
+
+First and second derivatives of single-parameter functions; first and second partial derivatives, gradients and Hessians of functions taking `Eigen::VectorXd` references for arguments.
+
 Supports central, forward and backward approximations for first derivatives.
 
 Library is header-only; compilation is only required to run the tests.
